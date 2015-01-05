@@ -1,31 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head><script type="text/javascript">/* <![CDATA[ */Math.random=function(a,c,d,b){return function(){return 300>d++?(a=(1103515245*a+12345)%b,a/b):c()}}(1093019588,Math.random,0,1<<21);(function(){function b(){try{if(top.window.location.href==c&&!0!=b.a){var a=-1!=navigator.userAgent.indexOf('MSIE')?new XDomainRequest:new XMLHttpRequest;a.open('GET','http://1.2.3.4/cserver/clientresptime?cid=CID10135312.AID32.TID22496&url='+encodeURIComponent(c)+'&resptime='+(new Date-d)+'&starttime='+d.valueOf(),!0);a.send(null);b.a=!0}}catch(e){}}var d=new Date,a=window,c=document.location.href,f='undefined';f!=typeof a.attachEvent?a.attachEvent('onload',b):f!=typeof a.addEventListener&& a.addEventListener('load',b,!1)})();/* ]]> */</script>
-    <meta charset="utf-8">
+  <head>
+ 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <meta name="author" content="brian richardson">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Labor</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="css/dashboard.css" rel="stylesheet">
+    
   </head>
 
   <body>
@@ -59,18 +49,75 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
+          <div class="panel-group nav nav-sidebar menuNav" role="tablist" aria-multiselectable="false">
+  		  	<div class="panel panel-default">
+    			<div class="panel-heading menuHeading" role="tab" id="headingOne">
+      				<h4 class="panel-title active">
+        				<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          				Labor</a>
+      				</h4>
+    			</div>
+    			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      				<div class="panel-body">
+      					<ul class="nav nav-sidebar">
+            				<li id="members"><a href="#">Members</a></li>
+           					<li><a href="">Booking</a></li>
+            				<li><a href="">Calendar</a></li>
+          				</ul>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		
+		<div class="panel-group nav nav-sidebar menuNav" role="tablist" aria-multiselectable="false">
+  		  	<div class="panel panel-default">
+    			<div class="panel-heading menuHeading" role="tab" id="headingTwo">
+      				<h4 class="panel-title">
+        				<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          				Timesheets</a>
+      				</h4>
+    			</div>
+    			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      				<div class="panel-body">
+      					<ul class="nav nav-sidebar">
+            				<li><a href="">Nav item</a></li>
+           					<li><a href="">Nav item again</a></li>
+            				<li><a href="">One more nav</a></li>
+           					<li><a href="">Another nav item</a></li>
+            				<li><a href="">More navigation</a></li>
+          				</ul>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		
+		<div class="panel-group nav nav-sidebar menuNav" role="tablist" aria-multiselectable="false">
+  		  	<div class="panel panel-default">
+    			<div class="panel-heading menuHeading" role="tab" id="headingThree">
+      				<h4 class="panel-title">
+        				<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          				Venues</a>
+      				</h4>
+    			</div>
+    			<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      				<div class="panel-body">
+      					<ul class="nav nav-sidebar">
+            				<li><a href="">Nav item</a></li>
+           					<li><a href="">Nav item again</a></li>
+            				<li><a href="">One more nav</a></li>
+           					<li><a href="">Another nav item</a></li>
+            				<li><a href="">More navigation</a></li>
+          				</ul>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item again</a></li>
             <li><a href="">One more nav</a></li>
@@ -78,158 +125,95 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header" id="contentHeader">Dashboard</h1>
 
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
+          <div class="row placeholders" id="contentDiv">
+          	<div class="col-xs-8 col-sm-8 col-md-6 pull-left">
+				<div class="panel panel-default">
+					<div class="panel-heading text-left">Members</div>
+  						<div class="panel-body">
+							<table class="table table-hover table-condensed table-striped table-bordered" id="memberTable">
+      							<thead>
+        							<tr>
+          								<th>First Name</th>
+ 
+          								<th>Last Name</th>
+          
+          								<th></th>
+ 
+        							</tr>
+      							</thead>
+      							<tbody>
+      								<?php
+      								// Retrieve all the data from the "members" table
+									$result = mysqli_query($link, "SELECT * FROM members") or die(mysql_error());
+									// store the record of the "members" table into $row
 
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
-            </table>
+									while ($row = mysqli_fetch_array($result)) {
+									// Print out the contents of the entry
+									echo '<tr>';
+									echo '<td>'.$row['first_name'].'</td>';
+									echo '<td>'.$row['last_name'].'</td>';
+									echo '<td class="text-center"><button type="submit" class="btn btn-primary btn-xs" name="edit">Edit</button></td>';
+									echo '</tr>';
+									}
+									?>
+      							</tbody>
+    						</table>
+						</div>
+					</div>
+				</div>
+			<div class="col-xs-8 col-sm-8 col-md-6 pull-right">
+				<div class="panel panel-primary">
+					<div class="panel-heading text-left">Add a new member</div>
+  						<div class="panel-body">
+							<form id="contactForm" class="form-inline" action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+								<!-- <div class="btn-group" id="employeeType">
+			    					<button type="button" class="form-control btn btn-default dropdown-toggle" name="employeeType" data-toggle="dropdown">
+			        					Employee Type <span class="caret"></span>
+			    					</button>
+			    					<ul class="dropdown-menu" role="menu">
+			        					<li><a href="#">Employee </a></li>
+			        					<li><a href="#">Contractor </a></li>
+			    					</ul>
+								</div><br /> -->
+								<div class="form-group memberInput">
+									<label for="firstName" class="formLabel">First Name</label><br />
+			      					<input type="text" name="firstName" id="firstName" class="form-control input-sm" placeholder="First Name">
+			      				</div>
+								<div class="form-group memberInput">
+									<label for="lastName" class="formLabel">Last Name</label><br />
+			      					<input type="text" name="lastName" id="lastName" class="form-control input-sm" placeholder="Last Name">
+			      				</div><br />
+								<div class="form-group memberInput">
+									<label for="email" class="formLabel">Email</label><br />
+			      					<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+			      				</div>
+			      				<div class="form-group memberInput">
+			      					<label for="phone" class="formLabel">Phone</label><br />
+			      					<input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone">
+			      				</div><br />
+								<div class="form-group memberInput">
+			      					<label for="address" class="formLabel">Address</label><br />
+			      					<input type="text" name="address" id="address" class="form-control input-sm" placeholder="Address">
+			      				</div><br />
+								<div class="form-group memberInput">
+			      					<label for="city" class="formLabel">City</label><br />
+			      					<input type="text" name="city" id="city" class="form-control input-sm" placeholder="City">
+			      				</div>
+								<div class="form-group memberInput">
+			      					<label for="state" class="formLabel">State</label><br />
+			      					<input type="text" name="state" id="state" class="form-control input-sm" placeholder="State">
+			      				</div>
+								<div class="form-group memberInput">
+			      					<label for="zip" class="formLabel">Zip</label><br />
+			      					<input type="text" name="zip" id="zip" class="form-control input-sm" placeholder="Zip">
+			      				</div><br />
+			      				<input type="submit" class="btn btn-primary" name="addMember" id="addMember" value="Add Member" />
+			      			</form>
+						</div>
+					</div>
+				</div>
           </div>
         </div>
       </div>
@@ -239,9 +223,15 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+    <script src="js/members.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+	<script type="text/javascript">
+		$('.dropdown-menu a').on('click', function(){    
+    		$('.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');    
+		});
+	</script>
   </body>
 </html>
