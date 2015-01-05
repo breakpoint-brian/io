@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="../css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="col-xs-8 col-sm-8 col-md-6 pull-left" style="border:solid 1px grey">
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr>
+			<td>soemthing</td>
+			<td>soemthing</td>
+			<td>soemthing</td>
+			<td>soemthing</td>
+		</tr>
+		<tr>
+			<td>soemthing</td>
+			<td>soemthing</td>
+			<td>soemthing</td>
+			<td>soemthing</td>
+		</tr>
+		<tr>
+			<td>soemthing</td>
+			<td>soemthing</td>
+			<td>soemthing</td>
+			<td>soemthing</td>
+		</tr>
+	</table>
+</div>
+
+<div class="col-xs-8 col-sm-8 col-md-6 pull-right">
+	<div class="panel panel-primary">
+		<div class="panel-heading text-left">Add a new member</div>
+  			<div class="panel-body">
+				<form method="post" id="contactForm" class="form-inline">
+					<div class="btn-group" id="employeeType">
+    					<button type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown">
+        					Employee Type <span class="caret"></span>
+    					</button>
+    					<ul class="dropdown-menu" role="menu">
+        					<li><a href="#">Employee </a></li>
+        					<li><a href="#">Contractor </a></li>
+    					</ul>
+					</div><br />
+					<div class="form-group memberInput">
+						<label for="firstName" class="formLabel">First Name</label><br />
+      					<input type="text" name="firstName" id="firstName" class="form-control input-sm" placeholder="First Name">
+      				</div>
+					<div class="form-group memberInput">
+						<label for="lastName" class="formLabel">Last Name</label><br />
+      					<input type="text" name="lastName" id="lastName" class="form-control input-sm" placeholder="Last Name">
+      				</div><br />
+					<div class="form-group memberInput">
+						<label for="email" class="formLabel">Email</label><br />
+      					<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+      				</div>
+      				<div class="form-group memberInput">
+      					<label for="phone" class="formLabel">Phone</label><br />
+      					<input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone">
+      				</div><br />
+					<div class="form-group memberInput">
+      					<label for="address" class="formLabel">Address</label><br />
+      					<input type="text" name="address" id="address" class="form-control input-sm" placeholder="Address">
+      				</div><br />
+					<div class="form-group memberInput">
+      					<label for="city" class="formLabel">City</label><br />
+      					<input type="text" name="city" id="city" class="form-control input-sm" placeholder="City">
+      				</div>
+					<div class="form-group memberInput">
+      					<label for="state" class="formLabel">State</label><br />
+      					<input type="text" name="state" id="state" class="form-control input-sm" placeholder="State">
+      				</div>
+					<div class="form-group memberInput">
+      					<label for="zip" class="formLabel">Zip</label><br />
+      					<input type="text" name="zip" id="zip" class="form-control input-sm" placeholder="Zip">
+      				</div><br />
+      				<input type="submit" class="btn btn-primary" name ="addMember" value="Add Member">
+      			</form>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+	$('.dropdown-menu a').on('click', function(){    
+    $('.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');    
+	});
+	</script>
+</body>
+</html>

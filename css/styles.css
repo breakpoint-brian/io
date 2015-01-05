@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.menuHeading a:visited {
+	
+	text-decoration:none;
+}
+
+.menuHeading a:hover {
+	
+	text-decoration:none;
+}
+
+.menuHeading a:active {
+	
+	text-decoration:none;
+}
+
+.formLabel {
+	font-size:0.8em;
+}
+
+#employeeType {
+	margin-bottom:10px;
+}
+
+.memberInput {
+	padding:0px 10px 10px 5px;
+}
+
+#address {
+	width:325px;
+}
