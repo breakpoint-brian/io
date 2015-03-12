@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include("../php/connection.php");
+include("../../php/connection.php");
 include("getMembers.php");
 
 ?>
@@ -17,11 +17,11 @@ include("getMembers.php");
     <title>Labor</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/styles.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
     
   </head>
 
@@ -43,7 +43,7 @@ include("getMembers.php");
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="../php/logout.php">Logout</a></li>
+            <li><a href="../../php/logout.php">Logout</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -91,7 +91,7 @@ include("getMembers.php");
     			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       				<div class="panel-body">
         				<ul class="nav nav-sidebar">
-        					<li><a href="../venue/index.php">Locations</a></li>
+        					<li><a href="../../venue/index.php">Locations</a></li>
         				</ul>  
         			</div>
     			</div>
@@ -107,7 +107,7 @@ include("getMembers.php");
     			<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       				<div class="panel-body">
         				<ul class="nav nav-sidebar">
-        					<li><a href="../events/index.php">Jobs</a></li>
+        					<li><a href="../../events/index.php">Jobs</a></li>
         				</ul>
         			</div>
     			</div>
@@ -116,7 +116,7 @@ include("getMembers.php");
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header" id="contentHeader">Members</h1>
-		  <!-- <div class="pull-right" style="color:#333333; font-size:0.5em; padding-top:18px; padding-right:5px;">Hello! <?php echo $_SESSION['login_user']; ?></div> -->
+
           <div class="row placeholders" id="contentDiv">
 			<?php echo $result;?>
           	<div class="col-xs-8 col-sm-8 col-md-6 pull-left">
@@ -152,8 +152,8 @@ include("getMembers.php");
 			        					Employee Type <span class="caret"></span>
 			    					</button>
 			    					<ul class="dropdown-menu" role="menu">
-			        					<li><a href="#" id ="emp" data-value="Employee">Employee </a></li>
-			        					<li><a href="#" id="con" data-value="Contractor">Contractor </a></li>
+			        					<li><a href="#" data-value="Employee">Employee </a></li>
+			        					<li><a href="#" data-value="Contractor">Contractor </a></li>
 			    					</ul>
 								</div><br />
 								<input type ="hidden" id="empType" name="empType" value="">
@@ -204,24 +204,16 @@ include("getMembers.php");
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/docs.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/docs.min.js"></script>
+    <script src="../../js/bootbox.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../../js/ie10-viewport-bug-workaround.js"></script>
 	<script>
 		$('.dropdown-menu a').on('click', function(){    
-     		$('.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');   
+     		$('.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');
+     		$("#empType").val($(".dropdown-menu a").attr('data-value'));    
  		});
-	</script>
-	<script>
-		$('#con').on('click', function() {
-			$("#empType").val($("#con").attr('data-value'));
-			});
-	</script>
-	<script>
-		$('#emp').on('click', function() {
-			$("#empType").val($("#emp").attr('data-value'));
-			});
 	</script>
  	<script type="text/javascript">
 		$(document).ready(function() {

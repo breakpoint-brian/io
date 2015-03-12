@@ -1,8 +1,8 @@
 <?php 
-session_start();
 include("../php/connection.php");
-include("getMembers.php");
-
+include("getEvent.php");
+include("selectBox.php");
+include("jobNumber.php");
 ?>
 
 <!DOCTYPE html>
@@ -14,13 +14,13 @@ include("getMembers.php");
     <meta name="description" content="">
     <meta name="author" content="brian richardson">
 
-    <title>Labor</title>
+    <title>Events</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles -->
     <link href="../css/dashboard.css" rel="stylesheet">
     
   </head>
@@ -73,7 +73,7 @@ include("getMembers.php");
     			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       				<div class="panel-body">
         				<ul class="nav nav-sidebar">
-        					<li><a href="#">Members</a></li>
+        					<li><a href="../labor/members/index.php">Members</a></li>
         					<li><a href="#">Booking</a></li>
         					<li><a href="#">Calendar</a></li>
         				</ul>
@@ -115,22 +115,26 @@ include("getMembers.php");
 		</div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header" id="contentHeader">Members</h1>
-		  <!-- <div class="pull-right" style="color:#333333; font-size:0.5em; padding-top:18px; padding-right:5px;">Hello! <?php echo $_SESSION['login_user']; ?></div> -->
+          <h1 class="page-header" id="contentHeader">Jobs</h1>
+
           <div class="row placeholders" id="contentDiv">
 			<?php echo $result;?>
           	<div class="col-xs-8 col-sm-8 col-md-6 pull-left">
 				<div class="panel panel-default">
-					<div class="panel-heading text-left"><span><strong>Members</strong></span></div>
+					<div class="panel-heading text-left"><span><strong>Current Jobs</strong></span></div>
   						<div class="panel-body">
-							<table class="table table-hover table-condensed table-striped table-bordered" id="memberTable">
+							<table class="table table-hover table-condensed table-striped table-bordered" id="eventTable">
       							<thead data-sort-name="name" data-sort-order="desc">
         							<tr>
-        								<th data-sortable="true">ID</th>
+        								<!-- <th data-sortable="true">Job Number</th> -->
         								
-          								<th data-sortable="true">First Name</th>
- 
-          								<th data-sortable="true">Last Name</th>
+          								<th data-sortable="true">Job Number</th>
+          								
+          								<th data-sortable="true">Job Name</th>
+          								
+          								<th data-sortable="true">Start Date</th>
+          								
+          								<th data-sortable="true">End Date</th>
           
           								<th></th>
  
@@ -144,53 +148,35 @@ include("getMembers.php");
 				</div>
 			<div class="col-xs-8 col-sm-8 col-md-6 pull-right" id="memberForm">
 				<div class="panel panel-primary">
-					<div class="panel-heading text-left">Add a new member</div>
+					<div class="panel-heading text-left">Add a new job</div>
   						<div class="panel-body">
 							<form id="contactForm" class="form-inline" action="" method="post">
-								<div class="btn-group" id="employeeType">
-			    					<button type="button" class="form-control btn btn-default dropdown-toggle" name="employeeType" data-toggle="dropdown">
-			        					Employee Type <span class="caret"></span>
-			    					</button>
-			    					<ul class="dropdown-menu" role="menu">
-			        					<li><a href="#" id ="emp" data-value="Employee">Employee </a></li>
-			        					<li><a href="#" id="con" data-value="Contractor">Contractor </a></li>
-			    					</ul>
+								<div class="pull-right">
+									<label for="jobNumber" class="formLabel">Job # </label>
+									<input type="number" id="jobNumber" name="jobNumber" class="form-control input-sm" value="<?php echo $lastJobNumber; ?>" readonly />
 								</div><br />
-								<input type ="hidden" id="empType" name="empType" value="">
-								<div class="form-group memberInput">
-									<label for="firstName" class="formLabel">First Name</label><br />
-			      					<input type="text" name="firstName" id="firstName" class="form-control input-sm" placeholder="First Name">
-			      				</div>
-								<div class="form-group memberInput">
-									<label for="lastName" class="formLabel">Last Name</label><br />
-			      					<input type="text" name="lastName" id="lastName" class="form-control input-sm" placeholder="Last Name">
+								<div class="btn-group" id="venue">
+									<label for="dropdown" class="formLabel">Venue Name</label><br />
+			    					<button type="button" class="form-control btn btn-default btn-sm dropdown-toggle" id="dropdown" name="venue" 
+			    					data-toggle="dropdown">Select a Venue <span class="caret"></span>
+			    					</button>
+			    					<ul class="dropdown-menu" role="menu" class="venueSelect">
+			    						<?php echo $venue_list; ?>
+			    					</ul>
+								</div>
+								<input type ="hidden" id="venName" name="venName" value="">
+								<div class="form-group memberInput" style="margin-top:5px;">
+									<label for="jobName" class="formLabel">Job Name</label><br />
+			      					<input type="text" name="jobName" id="jobName" class="form-control input-md" placeholder="Job Name">
 			      				</div><br />
-								<div class="form-group memberInput">
-									<label for="email" class="formLabel">Email</label><br />
-			      					<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-			      				</div>
-			      				<div class="form-group memberInput">
-			      					<label for="phone" class="formLabel">Phone</label><br />
-			      					<input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone">
-			      				</div><br />
-								<div class="form-group memberInput">
-			      					<label for="address" class="formLabel">Address</label><br />
-			      					<input type="text" name="address" id="address" class="form-control input-sm" placeholder="Address">
-			      				</div><br />
-								<div class="form-group memberInput">
-			      					<label for="city" class="formLabel">City</label><br />
-			      					<input type="text" name="city" id="city" class="form-control input-sm" placeholder="City">
-			      				</div>
-								<div class="form-group memberInput">
-			      					<label for="state" class="formLabel">State</label><br />
-			      					<input type="text" name="state" id="state" class="form-control input-sm" placeholder="State">
-			      				</div>
-								<div class="form-group memberInput">
-			      					<label for="zip" class="formLabel">Zip</label><br />
-			      					<input type="text" name="zip" id="zip" class="form-control input-sm" placeholder="Zip">
-			      				</div><br />
+			      				<div class="input-group" id="dateRange">
+			      					<label for="jobRange" class="formLabel">Start/End Date</label><br />
+    								<input type="date" class="input-sm form-control" name="start" />
+    								<span>to</span>
+    								<input type="date" class="input-sm form-control" name="end" />
+								</div><br /><br />
 			      				<input type="hidden" name="status" id="status" value="active" />
-			      				<input type="submit" class="btn btn-primary" name="addMember" id="addMember" value="Add Member" />
+			      				<input type="submit" class="btn btn-primary" name="addEvent" id="addEvent" value="Add Event" />
 			      			</form>
 						</div>
 					</div>
@@ -209,23 +195,20 @@ include("getMembers.php");
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
 	<script>
+		// Populates the dropdown menu when a venue is selected
 		$('.dropdown-menu a').on('click', function(){    
-     		$('.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');   
+     		$('.dropdown-toggle').html($(this).html() + " " + '<span class="caret"></span>');
  		});
 	</script>
 	<script>
-		$('#con').on('click', function() {
-			$("#empType").val($("#con").attr('data-value'));
-			});
-	</script>
-	<script>
-		$('#emp').on('click', function() {
-			$("#empType").val($("#emp").attr('data-value'));
-			});
+		// Populates the #venName field
+		$('.dropdown-menu a').on('click', function(){    
+     		$('#venName').val($(this).html());
+ 		});
 	</script>
  	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#tableData").load("makeTable.php");
+			$("#tableData").load("eventTable.php");
 			});
 	</script>
   </body>

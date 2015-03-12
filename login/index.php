@@ -1,10 +1,10 @@
 <?php
 session_start();
-include("php/register.php");
-include("php/signin.php");
+include("../php/register.php");
+include("../php/signin.php");
 
 if(isset($_SESSION['login_user'])) {
-	header("Location: labor/index.php");
+	header("location: labor/index.php");
 }
 ?>
 
@@ -20,9 +20,9 @@ if(isset($_SESSION['login_user'])) {
 		<title>Sign In or Register</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/css/signin.css" rel="stylesheet">
-		<link href="/css/styles.css" rel="stylesheet">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/signin.css" rel="stylesheet">
+		<link href="../css/styles.css" rel="stylesheet">
     
 	</head>
 
@@ -84,6 +84,6 @@ if(isset($_SESSION['login_user'])) {
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

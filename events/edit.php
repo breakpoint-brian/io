@@ -1,8 +1,21 @@
 <?php 
-session_start();
 include("../php/connection.php");
-include("getMembers.php");
+include("selectBox.php");
+include("updateVenue.php");
 
+// Retrieve all the data from the "members" table
+$id = $_GET['id'];
+$sql = "SELECT * FROM events WHERE `id` =". $id;
+$venue_detail = mysqli_query($link, $sql);
+// store the record of the "members" table into $row
+
+$row = mysqli_fetch_assoc($venue_detail);
+
+$jobNumber = $row['job_number'];
+$type = $row['venue_name'];
+$jobName = $row['job_name'];
+$start = $row['start_date'];
+$end = $row['end_date'];
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +27,7 @@ include("getMembers.php");
     <meta name="description" content="">
     <meta name="author" content="brian richardson">
 
-    <title>Labor</title>
+    <title>Venue</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
@@ -43,7 +56,7 @@ include("getMembers.php");
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="../php/logout.php">Logout</a></li>
+            <li><a href="#">Help</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -73,9 +86,8 @@ include("getMembers.php");
     			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       				<div class="panel-body">
         				<ul class="nav nav-sidebar">
-        					<li><a href="#">Members</a></li>
+        					<li><a href="../labor/members/index.php">Members</a></li>
         					<li><a href="#">Booking</a></li>
-        					<li><a href="#">Calendar</a></li>
         				</ul>
         			</div>
     			</div>
@@ -91,8 +103,8 @@ include("getMembers.php");
     			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       				<div class="panel-body">
         				<ul class="nav nav-sidebar">
-        					<li><a href="../venue/index.php">Locations</a></li>
-        				</ul>  
+        					<li><a href="#">Locations</a></li>
+        				</ul> 
         			</div>
     			</div>
   			</div>
@@ -108,6 +120,7 @@ include("getMembers.php");
       				<div class="panel-body">
         				<ul class="nav nav-sidebar">
         					<li><a href="../events/index.php">Jobs</a></li>
+        					<li><a href="calendar.php">Calendar</a></li>
         				</ul>
         			</div>
     			</div>
@@ -115,22 +128,24 @@ include("getMembers.php");
 		</div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header" id="contentHeader">Members</h1>
-		  <!-- <div class="pull-right" style="color:#333333; font-size:0.5em; padding-top:18px; padding-right:5px;">Hello! <?php echo $_SESSION['login_user']; ?></div> -->
+          <h1 class="page-header" id="contentHeader">Edit Job</h1>
+
           <div class="row placeholders" id="contentDiv">
 			<?php echo $result;?>
           	<div class="col-xs-8 col-sm-8 col-md-6 pull-left">
 				<div class="panel panel-default">
-					<div class="panel-heading text-left"><span><strong>Members</strong></span></div>
+					<div class="panel-heading text-left"><span><strong>Jobs</strong></span></div>
   						<div class="panel-body">
 							<table class="table table-hover table-condensed table-striped table-bordered" id="memberTable">
-      							<thead data-sort-name="name" data-sort-order="desc">
+      							<thead>
         							<tr>
-        								<th data-sortable="true">ID</th>
-        								
-          								<th data-sortable="true">First Name</th>
- 
-          								<th data-sortable="true">Last Name</th>
+        								<th data-sortable="true">Job Number</th>
+          								
+          								<th data-sortable="true">Job Name</th>
+          								
+          								<th data-sortable="true">Start Date</th>
+          								
+          								<th data-sortable="true">End Date</th>
           
           								<th></th>
  
@@ -144,53 +159,35 @@ include("getMembers.php");
 				</div>
 			<div class="col-xs-8 col-sm-8 col-md-6 pull-right" id="memberForm">
 				<div class="panel panel-primary">
-					<div class="panel-heading text-left">Add a new member</div>
+					<div class="panel-heading text-left">Edit Job</div>
   						<div class="panel-body">
-							<form id="contactForm" class="form-inline" action="" method="post">
-								<div class="btn-group" id="employeeType">
-			    					<button type="button" class="form-control btn btn-default dropdown-toggle" name="employeeType" data-toggle="dropdown">
-			        					Employee Type <span class="caret"></span>
-			    					</button>
-			    					<ul class="dropdown-menu" role="menu">
-			        					<li><a href="#" id ="emp" data-value="Employee">Employee </a></li>
-			        					<li><a href="#" id="con" data-value="Contractor">Contractor </a></li>
-			    					</ul>
+							<div class="pull-right">
+									<label for="jobNumber" class="formLabel">Job # </label>
+									<input type="number" id="jobNumber" name="jobNumber" class="form-control input-sm" value="<?php echo $jobNumber; ?>" readonly />
 								</div><br />
-								<input type ="hidden" id="empType" name="empType" value="">
-								<div class="form-group memberInput">
-									<label for="firstName" class="formLabel">First Name</label><br />
-			      					<input type="text" name="firstName" id="firstName" class="form-control input-sm" placeholder="First Name">
-			      				</div>
-								<div class="form-group memberInput">
-									<label for="lastName" class="formLabel">Last Name</label><br />
-			      					<input type="text" name="lastName" id="lastName" class="form-control input-sm" placeholder="Last Name">
+								<div class="btn-group" id="venue">
+									<label for="dropdown" class="formLabel">Venue Name</label><br />
+			    					<button type="button" class="form-control btn btn-default btn-sm dropdown-toggle" id="dropdown" name="venue" 
+			    					data-toggle="dropdown"><?php echo $type; ?><span class="caret"></span>
+			    					</button>
+			    					<ul class="dropdown-menu" role="menu" class="venueSelect">
+			    						<?php echo $venue_list; ?>
+			    					</ul>
+								</div>
+								<input type ="hidden" id="venName" name="venName" value="">
+								<div class="form-group memberInput" style="margin-top:5px;">
+									<label for="jobName" class="formLabel">Job Name</label><br />
+			      					<input type="text" name="jobName" id="jobName" class="form-control input-md" placeholder="Job Name" 
+			      					value="<?php echo $jobName; ?>">
 			      				</div><br />
-								<div class="form-group memberInput">
-									<label for="email" class="formLabel">Email</label><br />
-			      					<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-			      				</div>
-			      				<div class="form-group memberInput">
-			      					<label for="phone" class="formLabel">Phone</label><br />
-			      					<input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone">
-			      				</div><br />
-								<div class="form-group memberInput">
-			      					<label for="address" class="formLabel">Address</label><br />
-			      					<input type="text" name="address" id="address" class="form-control input-sm" placeholder="Address">
-			      				</div><br />
-								<div class="form-group memberInput">
-			      					<label for="city" class="formLabel">City</label><br />
-			      					<input type="text" name="city" id="city" class="form-control input-sm" placeholder="City">
-			      				</div>
-								<div class="form-group memberInput">
-			      					<label for="state" class="formLabel">State</label><br />
-			      					<input type="text" name="state" id="state" class="form-control input-sm" placeholder="State">
-			      				</div>
-								<div class="form-group memberInput">
-			      					<label for="zip" class="formLabel">Zip</label><br />
-			      					<input type="text" name="zip" id="zip" class="form-control input-sm" placeholder="Zip">
-			      				</div><br />
+			      				<div class="input-group" id="dateRange">
+			      					<label for="jobRange" class="formLabel">Start/End Date</label><br />
+    								<input type="date" class="input-sm form-control" name="start" value="<?php echo $start; ?>" />
+    								<span>to</span>
+    								<input type="date" class="input-sm form-control" name="end" value="<?php echo $end; ?>" />
+								</div><br /><br />
 			      				<input type="hidden" name="status" id="status" value="active" />
-			      				<input type="submit" class="btn btn-primary" name="addMember" id="addMember" value="Add Member" />
+			      				<input type="submit" class="btn btn-primary" name="updateEvent" id="updateEvent" value="Update Event" />
 			      			</form>
 						</div>
 					</div>
@@ -204,28 +201,24 @@ include("getMembers.php");
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/docs.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../../js/ie10-viewport-bug-workaround.js"></script>
 	<script>
 		$('.dropdown-menu a').on('click', function(){    
-     		$('.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');   
+     		$('.dropdown-toggle').html($(this).html() + '<span class="caret"></span>');
+     		$("#venType").val($(".dropdown-menu a").attr('data-value'));    
  		});
-	</script>
-	<script>
-		$('#con').on('click', function() {
-			$("#empType").val($("#con").attr('data-value'));
-			});
-	</script>
-	<script>
-		$('#emp').on('click', function() {
-			$("#empType").val($("#emp").attr('data-value'));
-			});
 	</script>
  	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#tableData").load("makeTable.php");
+			$("#tableData").load("eventTable.php");
+			});
+	</script>
+	<script type="text/javascript">
+		
+			$("#cancelUpdate").load("index.php");
 			});
 	</script>
   </body>
